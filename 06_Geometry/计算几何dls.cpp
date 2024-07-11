@@ -15,7 +15,7 @@ struct P {
 	bool operator<(P p) const {
 		int c = cmp(x, p.x);
 		if (c) return c == -1;
-		return cmp(y, p.y) == 1;
+		return cmp(y, p.y) == -1;
 	}
 
 	bool operator==(P p) const {
@@ -177,7 +177,7 @@ vector<P> convexHullNonStrict(vector<P> ps){
 db convecDiameter(vector<P> ps){
 	int n = ps.size(); if(n <= 1) return 0;
 	int is = 0, js = 0;
-	for(int k = 1; k <= n; k++) 
+	for(int k = 0; k < n; k++) 
 		is = ps[k] < ps[is] ? k : is, 
 		js = ps[js] < ps[k] ? k : js;
 	int i = is, j = js;
