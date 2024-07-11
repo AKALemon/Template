@@ -23,7 +23,6 @@ void solve(){
 		return a[1] > b[1];
 	});
 	int l = 1, r = 0;
-	//map<int,int> mp;
 	int ans = 0;
 
 	auto add = [&](int x){

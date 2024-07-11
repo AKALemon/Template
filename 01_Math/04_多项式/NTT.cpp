@@ -1,8 +1,8 @@
-constexpr int P = 998244353;
-constexpr int G = 3;
+constexpr i64 P = 998244353;
+constexpr i64 G = 3;
 using i64 = long long;
 // assume -P <= x < 2P
-int norm(int x) {
+i64 norm(i64 x) {
     if (x < 0) {
         x += P;
     }
@@ -12,7 +12,7 @@ int norm(int x) {
     return x;
 }
 template<class T>
-T power(T a, int b) {
+T power(T a, i64 b) {
     T res = 1;
     for (; b; b /= 2, a *= a) {
         if (b % 2) {
@@ -22,9 +22,9 @@ T power(T a, int b) {
     return res;
 } 
 struct Z {
-    int x;
-    Z(int x = 0) : x(norm(x % P)) {}
-    int val() const {
+    i64 x;
+    Z(i64 x = 0) : x(norm(x % P)) {}
+    i64 val() const {
         return x;
     }
     Z operator-() const {

@@ -156,7 +156,7 @@ vector<P> convexHull(vector<P> ps){
 		while(k > 1 && crossOp(qs[k - 2], qs[k - 1], ps[i]) <= 0) --k;
 	for(int i = n - 2, t = k; i >= 0; qs[k++] = ps[i--])
 		while(k > t && crossOp(qs[k - 2], qs[k - 1], ps[i]) <= 0) --k;
-	qs.resize(k - 1);
+	qs.resize(k - 1); 
 	return qs;
 }
 

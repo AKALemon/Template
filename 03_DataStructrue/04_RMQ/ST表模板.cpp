@@ -1,5 +1,5 @@
 namespace RMQ{
-    ll sum[N], table[N][LOGN];
+    i64 sum[N], table[N][LOGN];
     void init(int n){
         for(int i = 1; i <= n; i++)table[i][0] = i;
         for(int j = 1; (1 << j) <= n; j++)

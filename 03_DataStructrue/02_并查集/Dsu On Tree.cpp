@@ -28,7 +28,7 @@ struct DSU_ON_TREE {
         return his_fa.size();
     }
  
-    void roll(int h) {
+    void roll(int h) {  
         while (his_fa.size() > h) {
             his_fa.back().first = his_fa.back().second;
             his_fa.pop_back();

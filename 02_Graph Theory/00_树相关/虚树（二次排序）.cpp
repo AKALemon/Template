@@ -1,15 +1,7 @@
-#include<bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-typedef double db;
-// #define int long long
-constexpr int N = 3e5 + 50, LOGN = 20;
-constexpr ll mod = 1e9 + 7, inf = 1e12;
-
-vector<array<ll, 2>> g[N], vg[N];
+vector<array<i64, 2>> g[N], vg[N];
 
 int dfn[N], deep[N], tot = 0, fa[N][LOGN + 1];
-ll mdis[N][LOGN + 1];
+i64 mdis[N][LOGN + 1];
 
 void Dfs(int u, int father) {
     deep[u] = deep[father] + 1;
@@ -40,8 +32,8 @@ int Lca(int x, int y){
     return fa[x][0];
 }
 
-ll getdis(int x, int y) {
-    ll val = inf;
+i64 getdis(int x, int y) {
+    i64 val = inf;
     for (int i = LOGN; i >= 0; i--) {
         if (deep[x] - (1 << i) >= deep[y]) {
             val = min(val, mdis[x][i]), x = fa[x][i];
@@ -55,15 +47,15 @@ bool cmp(int i, int j) {
 }
 
 void connect(int u, int v) {
-    ll w = getdis(v, u);
+    i64 w = getdis(v, u);
     vg[u].push_back({v, w});
 };
 bool vis[N];
 
-ll dfs(int u) {
-    ll res = 0;
+i64 dfs(int u) {
+    i64 res = 0;
     for (auto [v, w] : vg[u]) {
-        ll nx = dfs(v);
+        i64 nx = dfs(v);
         if (vis[v]) res += w;
         else res += min(w, nx);
     }
@@ -112,14 +104,4 @@ void solve(){
         }
     }
 
-}
-
-signed main(){
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    cout << setprecision(15) << fixed;
-    int t = 1;
-    //cin >> t;
-    while (t--) solve();
-    return 0;
 }

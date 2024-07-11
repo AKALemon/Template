@@ -1,5 +1,3 @@
-// #pragma GCC optimize("Ofast", "inline", "-ffast-math")
-// #pragma GCC target("avx,sse2,sse3,sse4,mmx")
 #include<bits/stdc++.h>
 using namespace std;
 typedef unsigned long long ull;

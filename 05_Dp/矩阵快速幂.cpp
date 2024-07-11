@@ -1,38 +1,39 @@
+template<class T>
 struct Matrix {
-    vector<vector<i64>> a;
+    vector<vector<T>> a;
     Matrix() {}
-    Matrix(int n) {resize(n);}
-    Matrix(const vector<vector<i64>> &a) : a(a) {}
-    int size() const { return a.size(); }
-    void resize(int n) {
-        a.resize(n);
-        for (int i = 0; i < n; i++) {
-            a[i].assign(n, 0);
-            a[i][i] = 1;
-        }
-    }
-    vector<i64> operator[](int idx) const {
+    Matrix(const vector<vector<T>> &a) : a(a) {}
+    vector<T> operator[](int idx) const {
         return a[idx];
     }
-    vector<i64> &operator[](int idx) {
+    vector<T> &operator[](int idx) {
         return a[idx];
     }
     friend Matrix operator*(const Matrix &a, const Matrix &b) {
-        int n = a.size();
-        vector<vector<i64>> c(n, vector<i64> (n));
-        for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-        for (int k = 0; k < n; k++)
-            c[i][j] = (c[i][j] + a[i][k] * b[k][j] % mod) % mod;
+        int n1 = a.a.size();
+        int m1 = a[0].size();
+        int n2 = b.a.size();
+        int m2 = b[0].size();
+        assert(m1 == n2);
+        vector<vector<T>> c(n1, vector<T> (m2));
+        for (int i = 0; i < n1; i++)
+        for (int j = 0; j < m2; j++)
+        for (int k = 0; k < m1; k++)
+            c[i][j] += a[i][k] * b[k][j];
         return Matrix(c);
     }
-};
-Matrix matrix_pow(Matrix c, i64 k) {
-    Matrix b(c.size());
-    while (k) {
-        if (k & 1) b = b * c;
-        c = c * c;
-        k >>= 1;
+    void matrix_pow(Matrix c, i64 k) {
+        while (k) {
+            if (k & 1) *this = *this * c;
+            c = c * c;
+            k >>= 1;
+        }
     }
-    return b;
-}
+    void print() {
+        for (auto x : a) {
+            for (auto y : x) cout << y << ' ';
+            cout << '\n';
+        }
+        cout << '\n';
+    }
+};

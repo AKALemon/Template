@@ -13,3 +13,7 @@ join(x)：将 x 树并入当前树，前提是两棵树的类型一样，x 树�
 split(x,b)：以 Cmp_Fn 比较，小于等于 x 的属于当前树，其余的属于 b 树。
 empty()：返回是否为空。
 size()：返回大小。
+
+
+哈希表 似乎比unordered_map快
+gp_hash_table<int, int>

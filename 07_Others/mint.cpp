@@ -1,7 +1,7 @@
-constexpr int P = 998244353;
+constexpr i64 P = 998244353;
 using i64 = long long;
 // assume -P <= x < 2P
-int norm(int x) {
+i64 norm(i64 x) {
     if (x < 0) {
         x += P;
     }
@@ -11,7 +11,7 @@ int norm(int x) {
     return x;
 }
 template<class T>
-T power(T a, int b) {
+T power(T a, i64 b) {
     T res = 1;
     for (; b; b /= 2, a *= a) {
         if (b % 2) {
@@ -21,9 +21,9 @@ T power(T a, int b) {
     return res;
 }
 struct Z {
-    int x;
-    Z(int x = 0) : x(norm(x % P)) {}
-    int val() const {
+    i64 x;
+    Z(i64 x = 0) : x(norm(x % P)) {}
+    i64 val() const {
         return x;
     }
     Z operator-() const {
@@ -78,3 +78,15 @@ struct Z {
         return os << a.val();
     }
 };
+Z fac[N], invfac[N];
+Z C(int n, int m) {
+    if (n < m) return 0;
+    if (m < 0) return 0;
+    return fac[n] * invfac[m] * invfac[n - m];
+}
+void init() {
+    fac[0] = 1;
+    for (int i = 1; i < N; i++) fac[i] = fac[i - 1] * i;
+    invfac[N - 1] = fac[N - 1].inv();
+    for (int i = N - 1; i > 0; i--) invfac[i - 1] = invfac[i] * i;
+}

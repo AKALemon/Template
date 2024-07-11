@@ -1,6 +1,6 @@
 namespace LCA_Solver {
     int dep[N], seq[N], fir[N], f[N][LOGN], _log[N], idx;
-    ll dis[N];
+    i64 dis[N];
     void DFS(int u = 1, int fa = 0) {
         seq[++idx] = u; 
         fir[u] = idx; 
@@ -32,7 +32,7 @@ namespace LCA_Solver {
         int k = _log[y - x + 1]; 
         return mindep(f[x][k], f[y - (1 << k) + 1][k]);
     }
-    ll getdis(int x,int y) {
+    i64 getdis(int x,int y) {
         if (x == 0 || y == 0) return 0;
         return dis[x] + dis[y] - 2LL * dis[LCA(x, y)];
     }
