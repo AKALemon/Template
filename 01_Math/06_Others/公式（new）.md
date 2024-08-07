@@ -39,21 +39,21 @@
 4. 欧拉定理推广：$\gcd(n, p)=1 \Rightarrow a^{n} \equiv a^{n \% \varphi(p)} \pmod{p}$
 
 5. 模的幂公式：$a^{n}\pmod{m}= \left\{\begin{matrix}
-           a^{n}\pmod{m}  & n < \varphi(m) \\
-           a^{n\%\varphi(m)+\varphi(m)} \pmod{m} & n\ge \varphi(m)
-           \end{matrix}\right.$
+          a^{n}\pmod{m}  & n < \varphi(m) \\
+          a^{n\%\varphi(m)+\varphi(m)} \pmod{m} & n\ge \varphi(m)
+          \end{matrix}\right.$
 
 6. 素数定理：对于不大于 $n$ 的素数个数 $\pi(n)$，$\lim_{n \to \infty} \pi(n) = \frac{n}{\ln_{}{n}}$
 
 7. 莫比乌斯反演：
 
-       ​						令 $f(d)=\sum_{i=1}^{n}\sum_{j=1}^{m}\left [\gcd(i,j)=d \right ]$
+   ​	令 $f(d)=\sum_{i=1}^{n}\sum_{j=1}^{m}\left [\gcd(i,j)=d \right ]$
 
-       ​						$F(n)=\sum_{n\mid d} f(d)=\left \lfloor \frac{N}{n} \right \rfloor \left \lfloor \frac{M}{n} \right \rfloor$
+   ​	$F(n)=\sum_{n\mid d} f(d)=\left \lfloor \frac{N}{n} \right \rfloor \left \lfloor \frac{M}{n} \right \rfloor$
 
-       ​						有 $f(n)=\sum_{n \mid d} \mu(\left \lfloor \frac{d}{n} \right \rfloor)F(d)$
+   ​	有 $f(n)=\sum_{n \mid d} \mu(\left \lfloor \frac{d}{n} \right \rfloor)F(d)$
 
-       ​						$\phi(n)=\sum_{d \mid n}d\times \mu(n/d)$
+   ​	$\phi(n)=\sum_{d \mid n}d\times \mu(n/d)$
 
 8. 若 $\gcd(i, j) = 1$，则 $\gcd(n, n - i) = 1(1 \le i \le n)$
 
@@ -61,12 +61,12 @@
 
 10. 设 $a>b,\gcd(a,b) = 1$，则 $\gcd(a^{m} - b^{m}, a^{n} - b^{n}) = a^{\gcd(m,n)} - b^{\gcd(m, n)}$
 
-       ​											 $G = \gcd(C_{n}^{1},C_{n}^{2},…,C_{n}^{n - 1}) = \left\{\begin{matrix}n  & n \ is \ peime \\
-       1  & n \ has \ multy \ prime \ factors \\
-       p  & n \ has \ single \ prime \ factor \ p
-       \end{matrix}\right.$
+      ​											 $G = \gcd(C_{n}^{1},C_{n}^{2},…,C_{n}^{n - 1}) = \left\{\begin{matrix}n  & n \ is \ peime \\
+      1  & n \ has \ multy \ prime \ factors \\
+      p  & n \ has \ single \ prime \ factor \ p
+      \end{matrix}\right.$
 
-       ​											 $\gcd(Fib(m),Fib(n)) = Fib(\gcd(m, n))$
+      ​											 $\gcd(Fib(m),Fib(n)) = Fib(\gcd(m, n))$
 
 11. 若 $\gcd(m, n) = 1$， 则：
 
@@ -105,13 +105,23 @@
 
 6. 二项式反演：
 
-       ​						至少：$f_{k} = \sum_{i = k}^{n}\binom{i}{k}g_{i}\Leftrightarrow g_{k}=\sum_{i=k}^{n}(-1)^{i - k}\binom{i}{k}f_{i}$
+   ​						至少：$f_{k} = \sum_{i = k}^{n}\binom{i}{k}g_{i}\Leftrightarrow g_{k}=\sum_{i=k}^{n}(-1)^{i - k}\binom{i}{k}f_{i}$
 
-       ​						至多：$f_{n}=\sum_{i=0}^{n}\binom{n}{i}g_{i}\Leftrightarrow g_{n}=\sum_{i=0}^{n}(-1)^{n-i}\binom{n}{i}f_{i}$
+   ​						至多：$f_{n}=\sum_{i=0}^{n}\binom{n}{i}g_{i}\Leftrightarrow g_{n}=\sum_{i=0}^{n}(-1)^{n-i}\binom{n}{i}f_{i}$		
 
-7. 错排公式：$D(n) = (n - 1)(D(n - 2) + D(n - 1)) = n!\sum_{i = 0}^{n}\frac{(-1)^{i}}{i!} = \left [ \frac{n!}{e} + 0.5  \right ] $
+7. Min-Max容斥：
 
-8. 部分错排公式：$n + m$ 个数中 $m$ 个数必须错排求排列数
+    ​						$\max{S} = \sum_{T\subseteq S} (-1) ^{\left | T \right | + 1}\min{T}$
+
+    ​						期望意义下同样成立：$E(\max{S}) = \sum_{T\subseteq S} (-1) ^{\left | T \right | + 1}E(\min{T})$
+
+8. 扩展Min-Max容斥：
+
+    ​						$kth\max{S} = \sum_{T\subseteq S} (-1) ^{\left | T \right | - k}\binom{\left | T \right | - 1}{k-1}\min{T}$
+
+9. 错排公式：$D(n) = (n - 1)(D(n - 2) + D(n - 1)) = n!\sum_{i = 0}^{n}\frac{(-1)^{i}}{i!} = \left [ \frac{n!}{e} + 0.5  \right ] $
+
+10. 部分错排公式：$n + m$ 个数中 $m$ 个数必须错排求排列数
 
     * $dp\left [ i \right ]  = n\times dp\left [ i - 1 \right ] + (i - 1)\times (dp\left [i - 1 \right ] + dp\left [i - 2 \right ])$
     * $dp\left [ 0 \right ] = n!$
@@ -119,6 +129,10 @@
     * $dp\left [ m \right ]$ 为所求解
 
 ### 特殊的数
+
+#### 五边形数
+
+​		定理：$\prod_{i = 1}^{+\infty }(1-x^{i}) = \sum_{i = -\infty}^{+\infty}(-1)^{i}x ^{\frac{i \times (3 * i - i)}{2}}$
 
 #### 卡特兰数
 
@@ -171,7 +185,7 @@
 
 5. NTT 常用素数
     $$
-     \begin{vmatrix}
+    \begin{vmatrix}
      r⋅2^k+1 &r&k&g\\
          998244353&119&23&3\\
          1004535809&479&21&3\\
@@ -198,4 +212,3 @@
          4179340454199820289&29&57&3\\
      \end{vmatrix}
     $$
-    
