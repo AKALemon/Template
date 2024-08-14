@@ -1,4 +1,3 @@
-constexpr i64 P = 998244353;
 using i64 = long long;
 // assume -P <= x < 2P
 i64 norm(i64 x) {
