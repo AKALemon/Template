@@ -1,4 +1,4 @@
-const int B = 60;
+constexpr int B = 60;
 struct linear_basic {
     vector<i64> num;
     linear_basic() {num.resize(B + 1);}
